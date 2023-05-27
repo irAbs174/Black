@@ -34,7 +34,7 @@ RUN python3 manage.py makemigrations --empty index && python3 manage.py makemigr
 RUN python3 manage.py migrate
 
 # Create a superuser
-RUN python3 manage.py createsuperuser
+RUN echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com')" | python manage.py shell
 
 # Run tests
 RUN python manage.py test
