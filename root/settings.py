@@ -178,10 +178,10 @@ SECRET_KEY = 'django-insecure-38n_&5$5ga9)#!-r$&jcyk3^v^673x0u3%f8)*4ekxrd$)=ujs
 WAGTAILADMIN_BASE_URL = ''
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['irabs174-verbose-happiness-g4q7p5vrgwwhwpp9-8000.preview.app.github.dev', '127.0.0.1', 'localhost']
 
 # CSRF trusred origin
-#CSRF_TRUSTED_ORIGINS = ['',]
+CSRF_TRUSTED_ORIGINS = ['https://irabs174-verbose-happiness-g4q7p5vrgwwhwpp9-8000.preview.app.github.dev']
 
 # Default to dummy email backend. Configure dev/production/local backend
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
