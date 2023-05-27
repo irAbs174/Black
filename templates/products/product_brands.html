@@ -1,0 +1,21 @@
+{% extends "wagtailadmin/base.html" %}
+{% block titletag %} برند محصولات {% endblock %}
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        table.month {
+            margin: 20px;
+        }
+        table.month td, table.month th {
+            padding: 5px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% include "wagtailadmin/shared/header.html" with title="برند محصولات" %}
+    {% for brand in brands %}
+    <div class="nice-padding">
+      <h3> {{ brand.title }} </h3>
+    </div>
+    {% endfor %}
+{% endblock %}

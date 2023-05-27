@@ -1,0 +1,48 @@
+# Byte-compiled / optimized Python files
+*.pyc
+__pycache__/
+
+# Django development server
+*.pid
+*.log
+
+# Django migrations
+migrations
+
+# Virtual environment
+venv/
+env/
+
+# Dependency directories
+env/
+lib/
+lib64/
+parts/
+sdist/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+pkginfo/
+.egg-info/
+.installed.cfg
+*.egg
+
+# Database files
+*.sqlite3
+*.db
+
+# Static files
+/static/
+/media/
+
+# Other files and directories
+*.pyo
+*.swp
+._*
+.DS_Store
+

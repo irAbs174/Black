@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block TITLE %}خطای سرور{% endblock %}
+  {% block CONTENT %}
+  <div style="text-align: center;">
+    <h1>سرور به طور موقت از دسترسی خارج شده</h1>
+    <p>دیدن این صفحه نشان دهنده اعمال برخی تغییرات در بخش هایی از سایت است. لطفا دقایقی بعد مجددا تلاش کنید</p>
+    <button class="percent" onclick="window.history.back();">بازگشت</button>
+  </div>
+  {% endblock %}

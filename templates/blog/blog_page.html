@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+{% endblock %}
+{% block TITLE %}{{ page.title }}{% endblock %}
+{% block CONTENT %}
+<header class="headerblog">
+    <div class="h1divhead">
+        <h1 class="blogh1 white-color">{{ page.title }}</h1>
+      <h1 class="blogh1 white-color">
+      </h1>
+    </div>
+  </header>
+  <section class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <section
+          class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 blogs"
+        >
+          <div class="row">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                    <span class="bi bi-person">2020Black</span><br>
+                    <span class="card-text">{{ page.specific.intro|richtext }}</p><br>
+                    {% with categories=page.specific.categories.all %}
+                        {% if categories %}
+                            {% for category in categories %}
+                                <span class="bi bi-folder2-open">{{ category.name }}</span><br>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <p class="card-text"{{ page.specific.body|richtext }}></p>
+                    <span class="bi bi-calendar3">{{ page.specific.jpub}}</span></p>
+                    <a href="{{ page.get_parent.url }}">بازگشت</a>
+                
+            </section>
+                </div>
+            </div>
+           
+    </div>
+     
+</div>
+{% block JS %}
+<script
+src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+crossorigin="anonymous"
+></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+crossorigin="anonymous"
+></script>
+{%endblock%}
+{% endblock %}

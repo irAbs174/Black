@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% block TITLE %}{{ page.title }}{% endblock %}
+{% block CONTENT %}
+{% include 'utils/header.html' %}
+{% for shop in page.get_children. %}
+{% for product in shop.specific.product_title %}
+{{ product|richtext }}
+{% endfor %}
+{% endfor %}
+{% include 'utils/footer.html' %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "wagtailadmin/base.html" %}
+{% block titletag %} دسته بندی محصولات {% endblock %}
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        table.month {
+            margin: 20px;
+        }
+        table.month td, table.month th {
+            padding: 5px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% include "wagtailadmin/shared/header.html" with title="دسته بندی محصولات" %}
+    {% for category in categories %}
+    <div class="nice-padding">
+    <h3>{{ category.title }}</h3>
+    </div>
+    {% endfor %}
+{% endblock %}

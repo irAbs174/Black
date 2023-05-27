@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block TITLE %}Register form{% endblock %}
+{% block CONTENT %}
+{% if user.is_authenticated %}
+<h3 style="color: red;"> Error : you are now Regiser ! </h3>
+<button onclick="window.history.back();">Go Back</button>
+<a href="{% url 'logout' %}"><button>logout</button></a>
+{% else %}
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+  {% endif %}
+{% endblock %}

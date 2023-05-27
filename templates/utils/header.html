@@ -1,0 +1,179 @@
+{% load static %}
+{% load jalali_tags %}
+    <div class="container-fluid container-fluid-custom border-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-xxl-6 col-xl-6 col-lg-7 col-md-8 col-sm-12 call">
+            <i class="bi bi-calendar3"> <span>{% jalali_now "%a, %d %b %Y ساعت: %H:%M:%S" %}</span> </i>
+            <a href=""><i>فروشگاه آنلاین</i></a>
+            <a href=""><i>برند ها</i></a>
+            <a href=""><i>تماس با ما</i></a>
+            <a href=""><i>درباره ما</i></a>
+          </div>
+          <div
+            class="col-xxl-6 col-xl-6 col-lg-5 col-md-4 col-sm-12 soshalmedia"
+          >
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""> <i class="bi bi-whatsapp"></i></a>
+            <a href=""> <i class="bi bi-telegram"></i></a>
+            <a href=""> <i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end deader1 -->
+
+    <!-- start deader2 -->
+    <div class="container-fluid container-fluid-custom border-bottom">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-9 col-5 apshen"
+          >
+            <a href=""> <i class="bi bi-basket"> 0 تومان </i></a>
+            <a href=""><i class="bi bi-heart"> علاقه مندی </i></a>
+            <a href=""><i class="bi bi-arrow-left-right"> مقایسه </i></a>
+            {% if request.user.is_authenticated %}
+            <i class="bi bi-person"
+            ><a href="{% url 'account_logout' %}">خروج</a>
+          </i>
+            {% else %}
+            <i class="bi bi-person"
+            ><a href="{% url 'account_login' %}">ورود</a> / <a href="{% url 'account_signup' %}">ثبت نام</a>
+          </i>
+          {% endif %}
+          </div>
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-1 col-2 search3"
+          >
+            <form>
+              <input
+                class="searchnox"
+                type="search"
+                placeholder="جستجو"
+                aria-label="Search"
+              />
+              <button
+                class="searchnox red-b-color bi bi-search"
+                type="button"
+              />
+            </form>
+          </div>
+          <div
+            class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-5 logosite"
+          >
+            <a href="#">
+              <img
+                src="{% static 'img/index/Annotation2023-04-22192104.png' %}"
+                alt="logo site"
+                class="logo text-center"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end deader2 -->
+    <div class="container-fluid container-fluid-custom border-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2">
+            <!-- Example single danger button -->
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-danger dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                دسته بندی ها
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><a class="dropdown-item" href="#">دسته بندی کالا</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item red-color" href="#">همه محصولات</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 menusite">
+            <!-- ------------------------ -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+              <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        ><span class="bi bi-house-door"></span> صفحه اصلی</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        ><span class="bi bi-shop"></span> فروشگاه</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        ><span class="bi bi-mortarboard"></span> آموزش ها</a
+                      >
+                    </li>
+
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        اطلاعات سایت
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            ><span class="bi bi-person-rolodex"></span> تماس با
+                            ما</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            ><span class="bi bi-person-rolodex"></span> تماس با
+                            ما</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div
+            class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 buttonpopup"
+          >
+            <button class="percent">
+              <span class="bi bi-percent"></span> تخفیف های امروز
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
