@@ -1,7 +1,26 @@
-Black shop :
+# Black online shop
 
-Deploy :
-ls && virtualenv venv && source venv/bin/activate && pip3 install -r requirements.txt && clear && python3 manage.py makemigrations --empty index && python3 manage.py makemigrations --empty blog && python3 manage.py makemigrations --empty product && python3 manage.py makemigrations --empty category && python3 manage.py makemigrations index && python3 manage.py makemigrations blog && python3 manage.py makemigrations category && python3 manage.py makemigrations users && python3 manage.py makemigrations product && python3 manage.py migrate && clear && python3 manage.py createsuperuser && python3 manage.py test && clear && python3 manage.py runserver
+Welcome to the Black ! This project is built using Django and Docker.
+
+### Installation
+
+1. Clone the repository:
+git clone https://github.com/irAbs174/Black.git
+
+2. Change into the project directory:
+cd Black
+
+3. Build the Docker image:
+docker build -t Black .
+
+4. Run the Docker container:
+docker run -p 8000:8000 Black
+
+5. Enjoy!
+Access the application in browser at http://localhost:8000.
+
+# Development
+John Doe (@irAbs174)
 
 
 
