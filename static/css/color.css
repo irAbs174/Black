@@ -1,0 +1,41 @@
+:root {
+  --red: #ee655a;
+  --textBold: #444444;
+  --graytext: #747474;
+  --white: #ffffff;
+  --line1: #808080;
+  --icon: #808080;
+}
+.red-color {
+  color: var(--red);
+}
+.red-b-color {
+  background-color: var(--red);
+}
+.black-color {
+  color: var(--textBold);
+}
+.black-b-color {
+  background-color: var(--textBold);
+}
+.gray1-color {
+  color: var(--graytext);
+}
+.gray1-b-color {
+  background-color: var(--graytext);
+}
+.gray2-color {
+  color: var(--gray2);
+}
+.gray2-b-color {
+  background-color: var(--gray2);
+}
+.white-color {
+  color: var(--white);
+}
+.white-b-color {
+  background-color: var(--white);
+}
+.icon-color {
+  color: var(--graytext);
+}

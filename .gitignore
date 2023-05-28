@@ -37,7 +37,6 @@ pkginfo/
 *.db
 
 # Static files
-/static/
 /media/
 
 # Other files and directories

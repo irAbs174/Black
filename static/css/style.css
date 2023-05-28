@@ -1,0 +1,58 @@
+@import url("color.css");
+@import url("util/header/header1.css");
+@import url("util/header/header2.css");
+@import url("util/header/header3.css");
+@import url("blog.css");
+
+@import url("util/footer/footer1.css");
+@import url("util/footer/footer2.css");
+@import url("util/footer/footer3.css");
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@font-face {
+  font-family: vazir;
+  src: url(/fonts/Vazir-Medium.woff) format(woff);
+}
+*,
+body {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  box-sizing: border-box;
+  font-family: vazir;
+  font-style: normal;
+}
+body {
+  direction: rtl;
+}
+::selection {
+  color: var(--white);
+  background-color: var(--red);
+}
+a {
+  text-decoration: none;
+  color: var(--red);
+}
+.p {
+  font-size: 17px;
+  color: rgb(77, 77, 77);
+}
+
+.h1 {
+  font-size: 25px;
+}
+.h2 {
+  font-size: 22px;
+}
+.h3 {
+  font-size: 20px;
+}
+.h4 {
+  font-size: 18px;
+}
+.h5 {
+  font-size: 16px;
+}
+.h6 {
+  font-size: 14px;
+}

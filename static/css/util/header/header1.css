@@ -1,0 +1,31 @@
+.container-fluid-custom {
+  padding: 5px;
+}
+.container-fluid-custom .call i {
+  font-size: 12px;
+  margin-left: 10px;
+  color: var(--graytext);
+}
+.call i[class="bi bi-calendar3"] {
+  border-left: 1px solid var(--graytext);
+}
+.container-fluid-custom .soshalmedia {
+  direction: ltr;
+}
+.container-fluid-custom .soshalmedia i {
+  font-size: 15px;
+  margin-left: 10px;
+  color: var(--graytext);
+}
+@media only screen and (max-width: 483px) {
+  i[class="bi bi-calendar3"] {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 100px) {
+  .call,
+  .soshalmedia {
+    text-align: center;
+  }
+}

@@ -1,0 +1,45 @@
+/* BASE JAVASCRIPTS */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.footer li a:hover {
+    background-color: #555;
+}
