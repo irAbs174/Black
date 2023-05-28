@@ -28,6 +28,8 @@ class Index(Page):
 
     objects = IndexPageManager()
 
+    parent_page_types = []
+
     content_panels = Page.content_panels + [
         FieldPanel('body'),
     ]

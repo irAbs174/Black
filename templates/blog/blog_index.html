@@ -20,21 +20,21 @@
           class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 blogs"
         >
           <div class="row">
-            {% for post in page.get_children %}
+            {% for post in posts %}
             <div class="card" style="width: 18rem">
               <div class="card-body">
-                    <h3 class="card-title h3">{{post.specific.title}}</h3>
+                    <h3 class="card-title h3">{{post.title}}</h3>
                     <span class="bi bi-person">2020Black</span><br>
-                    {% with categories=post.specific.categories.all %}
+                    {% with categories=post.categories.all %}
                         {% if categories %}
                             {% for category in categories %}
                                 <span class="bi bi-folder2-open">{{ category.name }}</span><br>
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
-                    <span class="card-text">{{ post.specific.title|richtext }}</p><br>
-                    <p class="card-text"{{ post.specific.title|richtext }}></p>
-                    <span class="bi bi-calendar3">{{ post.specific.jpub}}</span></p>
+                    <span class="card-text">{{ post.title|richtext }}</p><br>
+                    <p class="card-text"{{ post.title|richtext }}></p>
+                    <span class="bi bi-calendar3">{{ post.jpub}}</span></p>
                     <a href="{% pageurl post %}">مشاهده بیشتر</a>
                     
                       </div>
@@ -43,9 +43,42 @@
                   {% endfor %}
                   </div>
             </section>
-           
+
     </div>
-     
+    {# Only show pagination if there is more than one page to click through #}
+    {% if posts.paginator.num_pages > 1 %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        {% if posts.has_previous %}
+                            <li class="page-item">
+                                <a href="?page={{ posts.previous_page_number }}" class="page-link">
+                                    <span>&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for page_num in posts.paginator.page_range %}
+                            <li class="page-item {% if page_num == posts.number %} active{% endif %}">
+                                <a href="?page={{ page_num }}" class="page-link">
+                                    {{ page_num }}
+                                </a>
+                            </li>
+                        {% endfor %}
+
+                        {% if posts.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{ posts.next_page_number }}" class="page-link">
+                                    <span>&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </div>
             
 {% block JS %}
