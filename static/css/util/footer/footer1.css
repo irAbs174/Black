@@ -1,0 +1,47 @@
+.footer1 {
+  padding: 30px;
+  text-align: center;
+}
+.footer1 label {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer1 [type="email"] {
+  width: 500px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(197, 197, 197);
+  text-align: right;
+  font-size: 12px;
+}
+.footer1 [type="submit"] {
+  width: 120px;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: var(--red);
+  color: var(--whitetext);
+  border: none;
+}
+@media screen and (max-width: 684px) {
+  .footer1 [type="email"] {
+    width: 70%;
+  }
+  .footer1 [type="submit"] {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 444px) {
+  .footer1 [type="email"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .footer1 [type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 7px;
+  }
+}

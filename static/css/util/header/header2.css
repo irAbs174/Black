@@ -1,0 +1,84 @@
+.container-fluid-custom .apshen {
+  padding: 25px 10px;
+}
+.apshen a {
+  color: var(--textBold);
+}
+
+.container-fluid-custom .apshen a i {
+  margin-left: 15px;
+  color: var(--textBold);
+}
+.logo {
+  width: 100px;
+  height: 60px;
+}
+.logosite {
+  direction: ltr;
+}
+/* //////////////////////////////// */
+.logo {
+  width: 100px;
+  height: 60px;
+}
+.searchnox {
+  margin-top: 18px;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(206, 206, 206);
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .container-fluid-custom .apshen a i {
+    font-size: 12px;
+  }
+  .apshen a {
+    font-size: 12px;
+  }
+
+  .searchnox {
+    margin-top: 18px;
+    font-size: 12px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .logo {
+    margin-top: 10px;
+    width: 80px;
+    height: 50px;
+  }
+}
+@media only screen and (max-width: 767px) and (min-width: 576px) {
+  .container-fluid-custom .apshen a i {
+    font-size: 10px;
+  }
+  .apshen a {
+    font-size: 10px;
+  }
+
+  .searchnox {
+    display: none;
+  }
+  .logo {
+    margin-top: 10px;
+    width: 80px;
+    height: 50px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .container-fluid-custom .apshen a i {
+    display: none;
+  }
+
+  .searchnox {
+    display: none;
+  }
+  .logo {
+    margin-top: 10px;
+    width: 80px;
+    height: 50px;
+  }
+}
