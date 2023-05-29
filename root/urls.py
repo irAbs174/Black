@@ -26,7 +26,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('uniqueAdmin/', admin.site.urls),
     path('api/', api_router.urls),
-    path('docs/', schema_view),
 
     re_path(r'', include(wagtail_urls)),
 ]
