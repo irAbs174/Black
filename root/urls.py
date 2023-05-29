@@ -20,7 +20,6 @@ from .api import api_router
 
 # NOTE : PLEASE KEEP THIS FILE SAFE !
 urlpatterns = [
-                    ''' url routing configuration '''
     path('UNIQUEADMINISTRATOR/', include(wagtailadmin_urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('UNIQUEDOC/', include(wagtaildocs_urls)),
