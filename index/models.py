@@ -11,10 +11,11 @@ from wagtail.snippets.models import register_snippet
 from wagtail.models import Page, PageManager
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
+from rest_framework.fields import Field
 from taggit.forms import TagField
+from wagtail.api import APIField
 from wagtail.search import index
 from django.db import models
-
 
 # INDEX PAGE MANAGER
 class IndexPageManager(PageManager):

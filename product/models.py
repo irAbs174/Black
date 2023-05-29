@@ -11,7 +11,6 @@ from modelcluster.fields import ParentalKey
 from django.utils import timezone
 from index.extensions.jalali_converter import jalali_converter as jConvert
 from users.models import CustomUser as User
-from category.models import Category as cat
 
 
 class ProductPageManager(PageManager):
