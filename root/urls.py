@@ -18,13 +18,17 @@ from django.conf import settings
 from .api import api_router
 
 
-''' url routing configuration '''
+# NOTE : PLEASE KEEP THIS FILE SAFE !
 urlpatterns = [
-    path('uniqueAdmin/', admin.site.urls),
+                    ''' url routing configuration '''
     path('UNIQUEADMINISTRATOR/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
+    path('api-auth/', include('rest_framework.urls')),
+    path('UNIQUEDOC/', include(wagtaildocs_urls)),
     path('accounts/', include('allauth.urls')),
+    path('uniqueAdmin/', admin.site.urls),
     path('api/', api_router.urls),
+    path('docs/', schema_view),
+
     re_path(r'', include(wagtail_urls)),
 ]
 
