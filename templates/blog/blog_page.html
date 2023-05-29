@@ -24,7 +24,7 @@
               <div class="card-body">
                     <span class="bi bi-person">2020Black</span><br>
                     <span class="card-text">{{ page.specific.intro|richtext }}</p><br>
-                    {% with categories=page.specific.categories.all %}
+                    {% with categories=page.specific.collection.all %}
                         {% if categories %}
                             {% for category in categories %}
                                 <span class="bi bi-folder2-open">{{ category.name }}</span><br>

@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content %}
     {% include "wagtailadmin/shared/header.html" with title="دسته بندی محصولات" %}
-    {% for category in categories %}
+    {% for category in collection %}
     <div class="nice-padding">
     <h3>{{ category.title }}</h3>
     </div>

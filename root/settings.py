@@ -174,8 +174,8 @@ USE_L10N = True
 USE_TZ = True
 
 # STATIC FILES (CSS, JavaScript, Images)
+''' Run command : python3 manage.py collectstatic for collect STATIC FILES '''
 STATICFILES_FINDERS = [
-    ''' Run command : python3 manage.py collectstatic for collect STATIC FILES '''
     'django.contrib.staticfiles.finders.FileSystemFinder',
 
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

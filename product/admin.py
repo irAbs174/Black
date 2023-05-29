@@ -11,7 +11,7 @@ class ProductAdmin(ModelAdmin):
     exclude_from_explorer = False
     add_to_admin_menu = True 
     list_display = ['product_title', 'price','image','quantity']
-    list_filter = ('categories', 'brand', 'is_active','author')
+    list_filter = ('collection', 'brand', 'is_active','author')
     search_fields = ('product_title','price')
 
 

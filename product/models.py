@@ -116,7 +116,7 @@ class Product(Page):
         FieldPanel('description'),
         FieldPanel('colors'),
         FieldPanel('is_active'),
-        FieldPanel('categories'),
+        FieldPanel('collection'),
         ]
 
     def get_context(self, request,*args, **kwargs):
