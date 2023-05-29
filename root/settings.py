@@ -84,16 +84,16 @@ REST_FRAMEWORK = {
 
 # MIDDLEWARE
 MIDDLEWARE = [
-    ''' Django MIDDLEWARE '''
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Django MIDDLEWARE
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 
-    ''' Wagtail MIDDLEWARE '''
+    # Wagtail MIDDLEWARE
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -146,7 +146,7 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'DB_NO_SQL',
+        'NAME': 'my.sqlite',
     }
 }
 
