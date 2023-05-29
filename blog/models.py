@@ -20,13 +20,20 @@ from index.extensions.jalali_converter import jalali_converter as jConvert
 from users.models import CustomUser as User
 
 
+# Blog Page Manager
 class BlogPageManager(PageManager):
+    ''' 
+    DEVELOPMENT BY #ABS 
+    '''
     pass
 
 
 # blog app index model
 class BlogIndex(Page, RoutablePageMixin):
     intro = RichTextField(blank=True, verbose_name='نام صفحه وبلاگ سایت')
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+    ]
 
     objects = BlogPageManager()
 
@@ -35,6 +42,7 @@ class BlogIndex(Page, RoutablePageMixin):
     ]
 
     subpage_types = ['blog.BlogPage']
+
     parent_page_types = ['index.Index']
 
     @property
@@ -84,12 +92,20 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+',
         verbose_name='تصویر شاخص پست',
+        help_text='یک تصویر بارگزاری کنید',
         )
+    collection = models.ForeignKey(
+        'wagtailcore.Collection',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='یک مجموعه انتخاب کنید',
+    )
     intro = models.CharField(max_length=25, verbose_name='توضیحات ابتدایی راجب پست')
     date = models.DateTimeField("Post date",default=timezone.now)
     body = RichTextField(blank=True, verbose_name='محتوای پست')
     description = models.CharField(max_length=25, verbose_name='توضیحات کامل پست')
-    categories = models.OneToOneField('category.Category', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='دسته بندی پست')
     
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
@@ -101,7 +117,7 @@ class BlogPage(Page):
         FieldPanel('image'),
         FieldPanel('intro'),
         FieldPanel('description'),
-        FieldPanel('categories'),
+        FieldPanel('collection'),
     ]
 
     class Meta:

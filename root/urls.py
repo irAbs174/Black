@@ -5,25 +5,26 @@ developer : #ABS
 """
 
 # Import all requirements
-from django.urls import include, path, re_path
+import os.path
+from wagtail.documents import urls as wagtaildocs_urls
 from django.conf.urls import handler404, handler500
-from django.conf.urls.static import static
+from wagtail.admin import urls as wagtailadmin_urls
 from django.views.generic.base import RedirectView
+from django.urls import include, path, re_path
+from django.conf.urls.static import static
+from wagtail import urls as wagtail_urls
 from django.contrib import admin
 from django.conf import settings
-import os.path
-from wagtail import urls as wagtail_urls
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.documents import urls as wagtaildocs_urls
+from .api import api_router
 
 
-# url routing configuration
+''' url routing configuration '''
 urlpatterns = [
     path('uniqueAdmin/', admin.site.urls),
     path('UNIQUEADMINISTRATOR/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('accounts/', include('allauth.urls')),
-    
+    path('api/', api_router.urls),
     re_path(r'', include(wagtail_urls)),
 ]
 

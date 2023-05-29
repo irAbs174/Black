@@ -10,71 +10,73 @@ import os
 import locale
 
 
-# Set PROJECT_DIR & BASE_DIR
+# SET PROJECT DIR
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# SET BASE DIR
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-# Debug
-DEBUG = True
-
+# site id (for multi site enable)
 SITE_ID = 1
 
 # Application definition
 INSTALLED_APPS = [
     # Django apps
-    'django.contrib.auth',
-    'django.contrib.admin',
+    'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.admin',
     'django.contrib.sites',
-    'django.contrib.staticfiles',
-    
-    # Internal apps
-    'index',
-    'users',
-    'blog',
-    'product',
-    'category',
-
-    #allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    'django.contrib.auth',
 
     # Wagtail full
     'wagtail.contrib.modeladmin',
-    'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.forms',
+    'wagtail.snippets',
+    'wagtail.documents',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
+    'wagtail.api.v2',
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
     'wagtail',
 
+    #allauth
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount',
+    'allauth.account',
+    'allauth',
+
     #External apps
+    'rest_framework',
+    'modelcluster',
     'jalali_date',
     'taggit',
-    'modelcluster',
+
+    # Internal apps
+    'index',
+    'users',
+    'blog',
+    'product',
 ]
 
 
+# MIDDLEWARE
 MIDDLEWARE = [
-    # Django MIDDLEWARE
+    ''' Django MIDDLEWARE '''
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 
-    # Wagtail MIDDLEWARE
+    ''' Wagtail MIDDLEWARE '''
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -103,14 +105,21 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
+
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
 # User authenticate model
 AUTH_USER_MODEL = 'users.CustomUser'
 
+# WAGTAIL FRONTEND LOGIN TEMPLATE
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'accounts/login.html'
+
+# WAGTAIL FRONTEND LOGIN URL
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
+
+# PASSWORD REQUIRED TEMPLATE
 PASSWORD_REQUIRED_TEMPLATE = 'accounts/password_required.html'
 
 # WSGI configuration
@@ -123,6 +132,7 @@ DATABASES = {
         'NAME': 'YOUR_DB_NAME',
     }
 }
+
 '''
 DATABASES = {
     'default': {
@@ -137,26 +147,35 @@ DATABASES = {
 
 # Internationalization configuration
 LANGUAGE_CODE = 'fa'
+
 TIME_ZONE = 'Asia/Tehran'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# STATIC FILES (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
+    ''' Run command : python3 manage.py collectstatic for collect STATIC FILES '''
     'django.contrib.staticfiles.finders.FileSystemFinder',
+
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+# STATIC FILES DIRS
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
-# ManifestStaticFilesStorage is recommended in production, to prevent outdated
+# Manifest Static Files Storage is recommended in production, to prevent outdated
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # static root Dir configuration
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# STATIC URL
 STATIC_URL = '/static/'
 
 # Media root Dir configuration
@@ -167,16 +186,19 @@ MEDIA_URL = '/media/'
 ADMINS = [
     ('ADMINISTRATOR', 'UNIQUEADMINISTRATOR@UNIQUEDOMIL.com'),
 ]
+
+''' !!! IMPORTAND !!! '''
+
+# ADMINISTRATOR
 MANAGERS = ADMINS
 
-''' importand '''
-# Make this unique, and don't share it with anybody.
+# SECRET KEY
 SECRET_KEY = 'django-insecure-38n_&5$5ga9)#!-r$&jcyk3^v^673x0u3%f8)*4ekxrd$)=ujs'
 
 # BASE ADMIN
 WAGTAILADMIN_BASE_URL = ''
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
+# ALLOWED HOSTS
 ALLOWED_HOSTS = ['irabs174-verbose-happiness-g4q7p5vrgwwhwpp9-8000.preview.app.github.dev', '127.0.0.1', 'localhost']
 
 # CSRF trusred origin
@@ -247,22 +269,64 @@ JALALI_DATE_DEFAULTS = {
     },
 }
 
-LOGIN_URL = '/login/'   
+# LOGIN URL
+LOGIN_URL = '/login/'
+
+# LOGIN REDIRECT URL
 LOGIN_REDIRECT_URL = '/'
+
+# ACCOUNT AUTHENTICATION METHOD
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+# ACCOUNT_CONFIRM_EMAIL_ON_GET
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+
+# ACCOUNT_EMAIL_REQUIRED
 ACCOUNT_EMAIL_REQUIRED = True
+
+# ACCOUNT_USERNAME_REQUIRED
 ACCOUNT_USERNAME_REQUIRED = False
+
+# LOGIACCOUNT_EMAIL_VERIFICATIONN_URL
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# LOGACCOUNT_LOGIN_ON_EMAIL_CONFIRMATIONIN_URL
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+
+# LOGIN_ACCOUNT_LOGOUT_ON_GET
 ACCOUNT_LOGOUT_ON_GET = True
+
+# ACCOUNT_LOGIN_ON_PASSWORD_RESET
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+
+# ACCOUNT_LOGOUT_REDIRECT_URL
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
+# ACCOUNT_PRESERVE_USERNAME_CASING
 ACCOUNT_PRESERVE_USERNAME_CASING = False
+
+# ACCOUNT_SESSION_REMEMBER 
 ACCOUNT_SESSION_REMEMBER = True
+
+# ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE 
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
-ACCOUNT_USERNAME_BLACKLIST = ["admin", "god"]
-ACCOUNT_USERNAME_MIN_LENGTH = 5
+
+# ACCOUNT_USERNAME_BLACKLIST
+ACCOUNT_USERNAME_BLACKLIST = ["admin", 'security', 'secure', 'protection', 'safeguard',
+ 'privacy', 'confidential', 'shield', 'lock', 'encrypted', 'defender', 'guard', 'safety',
+  'firewall', 'securex', 'sentinel', 'secureguard', 'securetech', 'cyber', 'hacker',
+   'securecode', 'protect', 'securenet', 'securezone', 'securelock', 'securedata', 'securecloud',
+    'securelink', 'secureaccess', 'securelogin', 'secureweb', 'accesscontrol', 'authentication',
+     'authorization', 'biometric', 'cryptography', 'cybersecurity', 'dataprotection',
+      'digitalcertificate', 'digitalsignature', 'end-to-endencryption', 'forensics',
+       'identitymanagement', 'informationsecurity', 'integrity', 'intrusiondetection', 'malware',
+        'networksecurity', 'password', 'phishing', 'ransomware', 'riskmanagement',
+         'securityaudit', 'securitybreach', 'securityclearance', 'securitypolicy',
+          'socialengineering','spyware', 'threatintelligence',
+           'virus', 'vulnerabilityassessment', 'zeroday', "god"]
+
+# ACCOUNT_USERNAME_MIN_LENGTH
+ACCOUNT_USERNAME_MIN_LENGTH = 6
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
@@ -277,7 +341,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# FORMS FOR AUTHENTICATION
 ACCOUNT_FORMS = {
+    ''' PLEASE KEEP THIS FILE SAFE !  '''
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'users.forms.CustomPasswordChangeForm',
     'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
@@ -287,3 +353,6 @@ ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
     'user_token': 'allauth.account.forms.UserTokenForm',
 }
+
+# Debug
+DEBUG = True

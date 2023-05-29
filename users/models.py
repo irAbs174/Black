@@ -11,6 +11,9 @@ from django.core.cache import cache
 
 # Custom User Manager class
 class CustomUserManager(BaseUserManager):
+    '''
+    2020 BLACK USERS
+    '''
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
@@ -35,6 +38,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     WPOPass = models.CharField(db_column='WPOPass',max_length=100, default = False, null=True)
     full_name = models.CharField(db_column='full_name',max_length=255, null=True)
     is_active = models.BooleanField(db_column='is_active',default=True)
+    collection = models.ForeignKey(
+        'wagtailcore.Collection',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='یک مجموعه برای کاربر انتخاب کنید',
+    )
     is_staff = models.BooleanField(db_column='is_staff',default=False)
     date_joined = models.DateTimeField(db_column='date_joined',auto_now_add=True)
     last_login = models.DateTimeField(db_column='last_login',auto_now_add=True)
@@ -53,5 +64,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             
 
     class Meta:
-        verbose_name_plural = 'Accounts'
+        verbose_name = 'کاربر'
+        verbose_name_plural = 'کاربران سایت'
         

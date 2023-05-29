@@ -4,22 +4,38 @@ developer : #ABS
 """
 
 # Import all requirements
-from django.db import models
-from wagtail.models import Page, PageManager
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.snippets.models import register_snippet
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from wagtail.search import index
-from wagtail.fields import RichTextField
+from wagtail.snippets.models import register_snippet
+from wagtail.models import Page, PageManager
 from wagtail.admin.panels import FieldPanel
-from wagtail.admin.ui.components import Component
+from wagtail.fields import RichTextField
 from taggit.forms import TagField
+from wagtail.search import index
+from django.db import models
 
 
+# INDEX PAGE MANAGER
 class IndexPageManager(PageManager):
-    ''' Index Page Manager '''
+    '''
+    DEVELOPMENT : #ABS
+     '''
     pass
+
+
+# Index Child Page Serializer
+class IndexChildPageSerializer(Field):
+    ''' Serialize model => API | JSON '''
+    def to_representation(self, value):
+        return [
+            {
+                'id' : child.id,
+                'slug' : child.slug,
+                'seo_title' : child.seo_title,
+                'title' : child.title,
+            }for child in value
+        ]
 
 
 # Index class
@@ -28,17 +44,39 @@ class Index(Page):
 
     objects = IndexPageManager()
 
+    max_count = 1
+
     parent_page_types = []
+
+    subpage_types = ['blog.BlogIndex',
+    'blog.BlogPage',
+    'product.Product',
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('body'),
     ]
 
+    api_fields = [
+        APIField("get_child_pages", serializer=IndexChildPageSerializer()),
+    ]
+
+    @property
+    def get_child_pages(self):
+        return self.get_children().public().live()
+
+    def get_context(self, request, *args, **kwargs):
+        """Send context(Like blog posts) for template"""
+        #context = super().get_context(request, *args, **kwargs)
+        # Get all posts
+        #all_posts = BlogPage.objects.live().public().order_by('-first_published_at')
+        pass
 
     class Meta:
         verbose_name = "خانه"
  
 
+# FOOTER LINK BOX
 class FooterLinkBox(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
 
@@ -50,6 +88,7 @@ class FooterLinkBox(models.Model):
         return self.title
 
 
+# FOOTER LINK
 class FooterLink(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
     url = models.URLField(max_length=500, verbose_name='لینک')
@@ -63,6 +102,7 @@ class FooterLink(models.Model):
         return self.title
 
 
+# SITE SLIDER
 class Slider(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
     url = models.URLField(max_length=500, verbose_name='لینک')
@@ -79,6 +119,7 @@ class Slider(models.Model):
         return self.title
 
 
+# SITE BANNER
 class SiteBanner(models.Model):
     class SiteBannerPositions(models.TextChoices):
         product_list = 'product_list', 'صفحه لیست محصولات',

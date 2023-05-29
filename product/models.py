@@ -21,6 +21,14 @@ class ProductPageManager(PageManager):
 @register_snippet
 class ProductBrand(models.Model):
     title = models.CharField(max_length=300, verbose_name='نام برند', db_index=True)
+    collection = models.ForeignKey(
+        'wagtailcore.Collection',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='یک مجموعه برای برند انتخاب کنید',
+    )
     url_title = models.CharField(max_length=300, verbose_name='نام در url', db_index=True)
     is_active = models.BooleanField(verbose_name='فعال / غیرفعال')
 
@@ -36,13 +44,21 @@ class ProductBrand(models.Model):
 class ProductColor(models.Model):
     color = models.CharField(max_length=10)
     pquantity = models.IntegerField(verbose_name='تعداد رنگ بندی :')
+    collection = models.ForeignKey(
+        'wagtailcore.Collection',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='یک مجموعه برای رنگ بندی انتخاب کنید',
+    )
 
     def __str__(self):
         return self.color
 
 
     class Meta:
-        verbose_name = 'رنگ بندی محصول'
+        verbose_name = 'رنگ بندی'
         verbose_name_plural = 'رنگ بندی محصولات'
 
 
@@ -64,13 +80,21 @@ class Product(Page):
     date_create = models.DateTimeField(default=timezone.now)
     product_title = models.CharField(max_length=300, verbose_name='نام و مدل محصول', null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    categories = models.OneToOneField(cat, null=True, blank=True, verbose_name='دسته بندی محصول', on_delete=models.SET_NULL)
+    collection = models.ForeignKey(
+        'wagtailcore.Collection',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='یک مجموعه برای کالا انتخاب کنید',
+    )
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True, blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
         verbose_name='تصویر محصول',
+        help_text='انتخاب تصویر شاخص برای کالا',
         )
     date = models.DateTimeField("Post date",default=timezone.now)
     brand = models.ForeignKey('ProductBrand', on_delete=models.SET_NULL, verbose_name='برند', null=True, blank=True)
@@ -141,9 +165,8 @@ class Product(Page):
             self.available = False
         super().save(*args, **kwargs)
 
-
     class Meta:
-        verbose_name = 'محصول'
+        verbose_name = 'کالا'
         verbose_name_plural = 'محصولات'
         
 
@@ -156,11 +179,11 @@ class ProductVisit(models.Model):
         return f'{self.product.title} / {self.ip}'
 
     class Meta:
-        verbose_name = 'بازدید محصول'
+        verbose_name = 'بازدید کالا'
         verbose_name_plural = 'بازدیدهای محصولات'
 
 
-class Store(models.Model):
+class Inventory(models.Model):
     products = models.ManyToManyField(Product)
 
     def sell_product(self, product_id, quantity):
@@ -179,5 +202,5 @@ class Store(models.Model):
             return False
 
     class Meta:
-        verbose_name = 'انبار محصول'
-        verbose_name_plural = 'انبار محصولات'
+        verbose_name = 'انبار کالا'
+        verbose_name_plural = 'انبار کالا'
