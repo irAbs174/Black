@@ -36,8 +36,6 @@ pkginfo/
 *.sqlite3
 *.db
 
-# Static files
-/media/
 
 # Other files and directories
 *.pyo
