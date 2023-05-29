@@ -25,7 +25,7 @@
               <div class="card-body">
                     <h3 class="card-title h3">{{post.title}}</h3>
                     <span class="bi bi-person">2020Black</span><br>
-                    {% with categories=post.specific.categories.all %}
+                    {% with categories=post.specific.collection.all %}
                         {% if categories %}
                             {% for category in categories %}
                                 <span class="bi bi-folder2-open">{{ category.name }}</span><br>
